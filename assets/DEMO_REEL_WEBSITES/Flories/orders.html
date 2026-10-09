@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flories Flower Shop - My Orders</title>
+    <link rel="icon" href="images/others/remove_bg_logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-circle">
+                    <img src="images/others/remove_bg_logo.png">
+                </div>
+                <div class="logo-text">
+                    Flories
+                    <span>FLOWER SHOP</span>
+                </div>
+            </div>
+
+            <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+            <label for="menu-toggle" class="hamburger-icon-btn">☰</label>
+
+            <nav class="nav-bar">
+                <div class="mobile-menu-header">
+                    <a href="cart.html" class="cart-btn mobile-inner-cart">🛒 CART</a>
+                    <label for="menu-toggle" class="menu-close-btn">✕</label>
+                </div>
+
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="collection.html">Collection</a></li>
+                    <li><a href="occasion.html">Occasions</a></li>
+                    <li><a href="orders.html" class="active">Orders</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a href="cart.html" class="cart-btn desktop-cart-only">
+                🛒 CART
+            </a>
+        </div>
+    </header>
+
+    <section class="orders-section-header">
+        <div class="container">
+            <h2 class="orders-title">My Orders</h2>
+            <p class="orders-subtitle">Track your flower deliveries and view order history</p>
+        </div>
+    </section>
+
+    <section class="orders-history-list">
+        <div class="container" id="orders-dynamic-container">
+            <div style="text-align: center; padding: 40px; color: #777;">
+                <p>No active orders found. Start adding flowers to track them here!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div>
+                <div class="logo">
+                    <div class="logo-text">Flories<span>FLOWER SHOP</span></div>
+                </div>
+                <p class="footer-desc">Where Every Petal Tells Your Story</p>
+                <p class="copyright">© 2026 Flories Flower Shop.<br>All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="collection.html">Shop</a></li>
+                    <li><a href="occasion.html">Occasions</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

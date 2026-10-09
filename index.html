@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vince Llanes</title>
+  <meta name="description"
+    content="Portfolio of Vince Llanes, a BSIT student building web-based systems with AI assistance.">
+  <link rel="icon" type="image/png" href="assets/images/yandi.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Unbounded:wght@500;600&family=Chakra+Petch:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.className = 'js'</script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="stars-container" aria-hidden="true">
+    <div id="stars-small"></div>
+    <div id="stars-medium"></div>
+    <div id="stars-large"></div>
+  </div>
+
+  <header class="nav-wrap">
+    <nav class="nav glass" aria-label="Main">
+      <button class="burger" aria-label="Toggle menu" aria-expanded="false"
+        aria-controls="menu"><span></span><span></span><span></span></button>
+      <ul id="menu" class="menu">
+        <li><a href="#home" data-nav="home">Home</a></li>
+        <li><a href="#skills" data-nav="skills">Skills</a></li>
+        <li><a href="#projects" data-nav="projects">Projects</a></li>
+        <li><a href="#contact" data-nav="contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1 id="hero-title"><span>Hi, I'm</span>Vince Llanes</h1>
+          <p class="tagline">BSIT student building web-based systems with AI assistance.</p>
+          <p class="lead">I also edit photos and videos, and I game when I'm not coding. This site collects the projects
+            and skills I've built up as a student.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#projects">View My Projects</a>
+            <a class="btn btn-ghost" href="#contact">Contact Me</a>
+          </div>
+          <div class="quick glass" role="group" aria-label="More about me">
+            <button type="button" data-open="certs-modal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="9" r="5" />
+                <path d="M9 13.5 8 21l4-2 4 2-1-7.5" />
+              </svg>Certificates</button>
+            <!-- FIXED PATH -->
+            <a href="resume_llanes_vince.pdf" download="Vince_Llanes_CV.pdf" target="blank"><svg viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14" />
+              </svg>Download CV</a>
+            <button type="button" data-open="reel-modal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="m10 8.5 5 3.5-5 3.5z" />
+              </svg>Demo Reel</button>
+          </div>
+        </div>
+        <figure class="portrait glass">
+          <!-- FIXED PATH -->
+          <img id="portrait" src="assets/images/profile.jpg" alt="Portrait of Vince Llanes">
+          <div class="ph">
+            <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.2"
+              aria-hidden="true">
+              <circle cx="12" cy="8.5" r="3.6" />
+              <path d="M4.5 20c.8-4 3.8-6 7.5-6s6.7 2 7.5 6" />
+            </svg>
+            <figcaption>Profile photo placeholder<code>assets/images/profile.jpg</code></figcaption>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-t">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <h2 id="about-t">About me</h2>
+          <p>A student developer who learns by building real pages and systems.</p>
+        </div>
+        <div class="about-grid">
+          <article class="panel glass wide rv">
+            <h3>Biography</h3>
+            <p>I'm a BSIT student who enjoys building web-based systems and uses AI as a coding assistant to move faster
+              while learning how things work. Outside of code I edit images in Photopea and videos in CapCut, and I'm a
+              gamer.</p>
+          </article>
+          <article class="panel glass rv">
+            <h3>Education</h3>
+            <p>Bachelor of Science in Information Technology</p>
+            <p class="ph-text">Pamantasan ng Lungsod ng Valenzuela</p>
+          </article>
+          <article class="panel glass rv">
+            <h3>Current studies</h3>
+            <p>BSIT coursework, plus self-study of the MERN stack (MongoDB, Express, React, Node.js).</p>
+          </article>
+          <article class="panel glass rv">
+            <h3>Interests</h3>
+            <p>Career: web and full-stack development. Programming: web-based systems and AI-assisted development.</p>
+          </article>
+          <article class="panel glass rv">
+            <h3>Strengths</h3>
+            <p>Pairing code with visual work: I build the pages and edit the images and videos that go with them.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills" aria-labelledby="skills-t">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <h2 id="skills-t">Skills</h2>
+          <p>Tools I use as a student and developer who is still learning.</p>
+        </div>
+        <div class="skill-grid">
+          <article class="panel glass s3 rv">
+            <h3>Programming</h3>
+            <ul class="chips">
+              <!-- FIXED PATHS -->
+              <li><img src="assets/logo_svg/java.svg" alt="" width="20" height="20">Java</li>
+              <li><img src="assets/logo_svg/python.svg" alt="" width="20" height="20">Python</li>
+              <li><img src="assets/logo_svg/csharp.svg" alt="" width="20" height="20">C#</li>
+              <li><img src="assets/logo_svg/javascript.svg" alt="" width="20" height="20">JavaScript</li>
+            </ul>
+          </article>
+          <article class="panel glass s3 rv">
+            <h3>Web development</h3>
+            <ul class="chips">
+              <li><img src="assets/logo_svg/html5.svg" alt="" width="20" height="20">HTML</li>
+              <li><img src="assets/logo_svg/css_old.svg" alt="" width="20" height="20">CSS</li>
+              <li><img src="assets/logo_svg/javascript.svg" alt="" width="20" height="20">JavaScript</li>
+              <li><img src="assets/logo_svg/php.svg" alt="" width="30" height="30">PHP</li>
+            </ul>
+          </article>
+          <article class="panel glass s2 rv">
+            <h3>Database</h3>
+            <ul class="chips">
+              <li><img src="assets/logo_svg/mysql-wordmark-light.svg" alt="MySQL" width="20" height="20">MySQL</li>
+            </ul>
+          </article>
+          <article class="panel glass s2 rv">
+            <h3>Tools</h3>
+            <ul class="chips">
+              <li><img src="assets/logo_svg/vscode.svg" alt="" width="20" height="20">VS Code</li>
+              <li><img src="assets/logo_svg/gemini.svg" alt="" width="20" height="20">Gemini</li>
+              <li><img src="assets/logo_svg/github_dark.svg" alt="" width="20" height="20">GitHub</li>
+              <li><img src="assets/logo_svg/claude.svg" alt="" width="20" height="20">Claude</li>
+            </ul>
+          </article>
+          <article class="panel glass s2 rv">
+            <h3>Image and video editing</h3>
+            <ul class="chips">
+              <li><img src="assets/logo_svg/photopea.svg" alt="" width="20" height="20">Photopea</li>
+              <li><img src="assets/logo_svg/capcut.svg" alt="" width="20" height="20">Capcut</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects" aria-labelledby="projects-t">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <h2 id="projects-t">Projects</h2>
+          <p>Websites I built while learning. Each opens in a new tab.</p>
+        </div>
+        <div class="card-grid" id="project-grid"></div>
+        <div class="center rv"><button class="btn btn-ghost" type="button" data-open="projects-modal">View more
+            projects</button></div>
+      </div>
+    </section>
+
+    <section class="section" id="journey" aria-labelledby="journey-t">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <h2 id="journey-t">Learning journey</h2>
+          <p>No job history yet. This is what I've studied and built so far.</p>
+        </div>
+        <div class="journey">
+          <article class="panel now rv">
+            <h3>Learning now: MERN stack</h3>
+            <p>Working toward full-stack JavaScript apps.</p>
+            <ul class="chips">
+              <li><img src="assets/logo_svg/mongodb.svg" alt="" width="20" height="20">MongoDB</li>
+              <li><img src="assets/logo_svg/expressjs.svg" alt="" width="20" height="20" class="logo-white">Express</li>
+              <li><img src="assets/logo_svg/react.svg" alt="" width="20" height="20">React</li>
+              <li><img src="assets/logo_svg/nodejs.svg" alt="" width="20" height="20">Node.js</li>
+            </ul>
+          </article>
+          <article class="panel glass rv">
+            <h3>Languages studied</h3>
+            <p>Java, Python, C#, JavaScript, plus HTML and CSS for the web.</p>
+          </article>
+          <article class="panel glass rv">
+            <h3>Projects built</h3>
+            <p>Flories, House of Origami, Going Shop Shop, Messenger Replica and Login UI. See Projects above.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-t">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <h2 id="contact-t">Get in touch</h2>
+          <p>Message me about a project, a collaboration, or something I built.</p>
+        </div>
+        <div class="contact-grid">
+          <ul class="links rv" id="links"></ul>
+          <form class="panel glass rv" id="contact-form" novalidate>
+            <label>Your name<input name="name" required autocomplete="name"></label>
+            <label>Your email<input name="email" type="email" required autocomplete="email"></label>
+            <label>Message<textarea name="message" rows="4" required></textarea></label>
+            <button class="btn btn-primary" type="submit">Open in email app</button>
+            <p class="hint" id="form-msg" role="status">This opens your email app with the message filled in.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <p>&copy; <span id="year">2026</span> Vince Llanes</p>
+      <p class="credit">Web-Based Portfolio</p>
+    </div>
+  </footer>
+
+  <!-- Overlays -->
+  <div class="overlay" id="projects-modal" role="dialog" aria-modal="true" aria-labelledby="pm-t" aria-hidden="true">
+    <div class="sheet">
+      <div class="sheet-head">
+        <h2 id="pm-t">All projects</h2><button class="close btn btn-ghost btn-sm" type="button"
+          aria-label="Close projects">Close</button>
+      </div>
+      <div class="card-grid" id="modal-projects"></div>
+    </div>
+  </div>
+  <div class="overlay" id="certs-modal" role="dialog" aria-modal="true" aria-labelledby="cm-t" aria-hidden="true">
+    <div class="sheet">
+      <div class="sheet-head">
+        <h2 id="cm-t">Certificates and achievements</h2><button class="close btn btn-ghost btn-sm" type="button"
+          aria-label="Close certificates">Close</button>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Filter by type" id="cert-tabs"></div>
+      <div class="cert-grid" id="cert-grid" role="tabpanel"></div>
+    </div>
+  </div>
+  <div class="overlay" id="reel-modal" role="dialog" aria-modal="true" aria-labelledby="rm-t" aria-hidden="true">
+    <div class="sheet reel">
+      <div class="sheet-head">
+        <h2 id="rm-t">Demo reel</h2><button class="close btn btn-ghost btn-sm" type="button"
+          aria-label="Close demo reel">Close</button>
+      </div>
+      <!-- FIXED PATH -->
+      <video controls playsinline preload="none">
+        <source src="assets/video/demo_reel.mp4" type="video/mp4">Your browser can't play this video.
+      </video>
+    </div>
+  </div>
+  <div class="overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate preview"
+    aria-hidden="true">
+    <div class="sheet light">
+      <div class="sheet-head"><button class="close btn btn-ghost btn-sm" type="button"
+          aria-label="Close preview">Close</button></div>
+      <div id="light-body"></div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GOING SHOP SHOP</title>
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffe0b2;
+      margin: 0 15px;
+      padding: 10px;
+    }
+    nav {
+      background-color: #cf8686;
+      color: rgba(255, 255, 255, 0);
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .product-list {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+    .product-list div {
+      text-align: center;
+      border: 1px solid #000000;
+      padding: 10px;
+      border-radius: 20px;
+      background-color: #ffffff;
+    }
+    .product-list img {
+      width: 175px;
+      height: 175px;
+      border-radius: 20px;
+    }
+    button {
+      background-color: #429dff;
+      color: white;
+      padding: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #8cdeff;
+        
+    }
+  </style>
+</head>
+<body>
+  
+  <img src="going_logo.png" alt="Product 1" width="10%" height="15%">
+  <h1>GOING SHOP SHOP</h1>
+  <h5><center>Buy your fav merch of your idols</center></h5>
+  
+  
+  <div class="product-list">
+    <div>
+      <img src="product_one.jpeg" alt="Product 1">
+      <h3>GOING ALBUM NIGHT VERSION</h3>
+      <p>$20.00</p>
+      <button onclick="location.href='orderplace.html?product=Product1&price=20.00&image=product_one.jpg'">Buy Now</button>
+    </div>
+    <div>
+      <img src="product_four.jpeg" alt="Product 2">
+      <h3>GOING HEADPHONES(Fandom Version)</h3>
+      <p>$30.00</p>
+      <button onclick="location.href='orderplace2.html?product=Product2&price=30.00&image=product_four.jpg'">Buy Now</button>
+    </div>
+    <div>
+      <img src="product_five.jpeg" alt="Product 3">
+      <h3>GOING ALBUM (GUM VERSION)</h3>
+      <p>$25.00</p>
+      <button onclick="location.href='orderplace3.html?product=Product3&price=25.00&image=product_five.jpeg'">Buy Now</button>
+    </div>
+  </div>
+</body>
+</html>

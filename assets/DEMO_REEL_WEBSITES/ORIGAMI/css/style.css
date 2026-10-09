@@ -1,0 +1,873 @@
+/* --- 1. FONTS & VARIABLES --- */
+@font-face {
+    font-family: 'AubreyCustom';
+    src: url(../fonts/Aubrey_font/Aubrey-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'RobotoCustom';
+    src: url(../fonts/Roboto_font/Roboto-VariableFont_wdth\,wght.ttf) format('truetype');
+    font-weight: 100 900;
+}
+
+:root {
+    --darkpink: #E94E77;
+    --lighttan: #EEEBE6;
+    --rose: #D68189;
+    --tan: #C6A49A;
+    --ivory: #E3CFB4;
+}
+
+
+body {
+    margin: 0;
+    font-family: 'RobotoCustom', sans-serif;
+    background-color: white;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 5%;
+}
+
+.left-upper-logo {
+    order: 1;
+    margin-bottom: 20px;
+}
+
+.left-upper-logo img {
+    width: 500px;
+    max-width: 90vw;
+    height: auto;
+    display: block;
+}
+
+nav {
+    order: 2;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+nav ul li a {
+    display: inline-block;
+    background-color: var(--rose);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: var(--darkpink); 
+    transform: translateY(-10px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}    
+
+.welcome-part {
+    text-align: center;
+    padding: 30px 10%;
+}
+
+.welcome-part h2 {
+    font-family: 'AubreyCustom', cursive;
+    font-size: 36px;
+    margin: 0 0 15px 0;
+}
+
+.welcome-part p {
+    text-align: justify;
+    line-height: 1.6;
+    font-size: 16px;
+    margin: 0;
+}
+
+.middle-box {
+    background-color: var(--lighttan);
+    padding: 50px 0 20px 0;
+    max-width: 100%;
+}
+
+.featured-part {
+    text-align: center;
+    padding: 0 5%;
+}
+
+.title-head {
+    letter-spacing: 30px;
+    font-size: 20px;
+    margin: 0 0 5px 0;
+    font-family: 'RobotoCustom', sans-serif;
+    font-weight: 400;
+}
+
+.title-p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.dragon-image img {
+    display: block;
+    width: 80%;
+    max-width: 100%;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+.spear-tailed-dragon {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10%;
+    gap: 30px;
+}
+
+.dragon-info {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.dragon-title {
+    font-size: 22px;
+    margin: 0 0 15px 0;
+}
+
+.enroll-box {
+    background-color: var(--tan);
+    color: white;
+    padding: 40px 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.enroll-head {
+    font-size: 24px;
+    margin: 0;
+    font-weight: normal;
+}
+
+.enroll-box p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.price-cirle {
+    background-color: var(--lighttan);
+    color: var(--darkpink);
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+    border: 5px solid white;
+    margin: 10px 0;
+}
+
+.join-button {
+    background-color: var(--darkpink);
+    color: white;
+    padding: 12px 35px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.join-button:hover {
+    background-color: black;
+}
+
+.divider-text {
+    padding: 50px 10%;
+    text-align: justify;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.masterclass-lessons {
+    background-color: var(--lighttan);
+    padding: 50px 0;
+}
+
+.masterclass-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 5%;
+}
+
+.masterclass-header h2 {
+    letter-spacing: 25px;
+    font-size: 22px;
+    margin: 0 0 10px 0;
+    font-family: 'RobotoCustom', sans-serif;
+    font-weight: 400;
+}
+
+.masterclass-header p {
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.masterclass-table {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 10%;
+}
+
+.masterclass-table article {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    padding: 15px;
+}
+
+.masterclass-table article img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.animal-name {
+    text-align: center;
+}
+
+.content {
+    padding: 20px;
+}
+
+.content h3 {
+    margin: 0 0 15px 0;
+    font-size: 20px;
+}
+
+.content p {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.button-box {
+    background-color: var(--darkpink);
+    width: fit-content;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.button-box h2 {
+    color: white;
+    font-size: 24px;
+    margin: 0 0 5px 0;
+}
+
+.button-box p {
+    color: black;
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+footer {
+    background-color: var(--tan);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 5%;
+    gap: 30px; 
+    text-align: center;
+    color: black;
+    font-size: 13px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-left img {
+    width: 200px; 
+}
+
+.footer-left p {
+    white-space: pre-line; 
+    margin: 0;
+    line-height: 1.5;
+}
+
+.footer-right p {
+    margin: 0;
+}
+
+/*==================================
+                ABOUT                   
+===================================*/    
+
+.main-banner {background-color: var(--tan);
+    background-image: url('../images/bg_tile.png');
+    background-repeat: repeat;
+    padding: 30px 5%;
+    text-align: center;
+    color: white;
+}
+
+.main-banner h2 {
+    margin-left: 0;
+    font-size: 50px;
+    letter-spacing: 2px;
+    font-weight: 400;
+    font-family: 'RobotoCustom', sans-serif;
+}
+
+.two-master-box {
+    padding: 50px 5%;
+    text-align: center;
+    background-color: white;
+}
+
+.two-master-header h3,
+.five-master-header h3,
+.video-lesson h3,
+.lessons-master-header h3 {
+    font-family: 'RobotoCustom', sans-serif;
+    font-weight: 400;
+    letter-spacing: 30px;
+    font-size: 20px;
+    margin: 0 0 5px 0;
+}
+
+.two-master-header p,
+.five-master-header p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.two-master-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.circle-img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.profile-info p,
+.current-head p,
+.staff p {
+    margin: 5px 0;
+    line-height: 1.2;
+}
+
+.profile-info p:first-of-type,
+.current-head p:first-of-type,
+.staff p:first-of-type {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.five-master-box {
+    background-color: var(--lighttan);
+    padding: 50px 5%;
+    text-align: center;
+}
+
+.five-current-masters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.current-head img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.four-staff-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 15px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.staff {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.circle-image {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.staff p {
+    font-size: 12px;
+}
+
+/* ========================================= 
+            LESSONS                     
+ ========================================= */
+
+.lessons-master-class {
+    padding: 50px 5%;
+    background-color: white;
+}
+
+.video-lessons-section {
+    padding: 50px 5%;
+    background-color: var(--lighttan);
+}
+
+.lessons-master-header,
+.video-lesson-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.video-lesson-header h3 {
+    font-family: 'RobotoCustom', sans-serif;
+    font-weight: 400;
+    letter-spacing: 25px;
+    font-size: 25px;
+    margin: 0 0 5px 0;
+}
+
+.lessons-master-header p,
+.video-lesson-header p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.lessons-container {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 30px;
+}
+
+.lesson-card {
+    background-color: var(--ivory);
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lesson-card img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.lesson-name {
+    letter-spacing: 2px;
+    font-family: sans-serif;
+    margin: 0 0 15px 0;
+    font-size: 16px;
+}
+
+.lesson-button {
+    background-color: var(--darkpink);
+    color: white;
+    padding: 10px 30px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lesson-button:hover {
+    background-color: black;
+    transform: translateY(-3px);
+}
+
+.video-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.video-item {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.video-item iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9; 
+    border: none;
+    display: block;
+}
+
+.video-item h3 {
+    margin: 20px 0 0 0;
+    font-size: 18px;
+}
+
+/* ========================================= 
+                CONTACT                 
+========================================= */
+
+.main-map iframe {
+    width: 100%;
+    height: 350px;
+    display: block;
+}
+
+.contact.container {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 5%;
+    gap: 50px;
+}
+
+.form-container h3, 
+.hq-section h4 {
+    font-size: 16px;
+    margin: 0 0 20px 0;
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    align-items: flex-start;
+}
+
+.form-group > label[for], 
+.form-group > p {
+    width: 90px;
+    font-size: 14px;
+    margin: 10px 0 0 0;
+}
+
+.form-group > input[type="text"],
+.form-group > select,
+.form-group > textarea {
+    flex: 1;
+    background-color: var(--lighttan);
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.form-group > textarea {
+    resize: vertical; 
+}
+
+.form-group > label:not([for]) {
+    width: calc(100% - 90px);
+    margin-left: 90px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.form-group > p + label:not([for]) {
+    margin-left: 0; 
+}
+
+.send-button {
+    background-color: var(--darkpink);
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 90px;
+    transition: all 0.3s ease;
+}
+
+.send-button:hover {
+    background-color: black;
+    transform: translateY(-3px);
+}
+
+.hq-section {
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.hq-section p {
+    margin: 0 0 15px 0;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.social-icons img {
+    width: 32px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (min-width: 1024px) {
+
+    /*===========================
+                HOME
+    ===========================*/           
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 30px 10%;
+    }
+    .left-upper-logo {
+        order: 1;
+        margin-left: -10%;
+    }
+
+    nav {
+        order: 2;
+        margin-right: -10%;
+    }
+
+    .left-upper-logo img {
+        width: 250px;
+        margin-bottom: 0;
+    }
+
+    nav ul {
+        margin-top: 0;
+    }
+
+    .welcome-part, 
+    .divider-text {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .spear-tailed-dragon {
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        padding: 50px 10%;
+        gap: 50px;
+        max-width: 1200px;
+        width: 1200px;
+    }
+
+    .dragon-info {
+        flex: 2;
+        text-align: left;
+    }
+
+    .enroll-box {
+        flex: 1;
+        max-width: 1200px;
+    }
+
+    .masterclass-table {
+        flex-direction: row;
+        align-items: stretch; 
+        padding: 40px 10%;
+        gap: 20px;
+        max-width: 1400px;
+        margin: 0 auto
+    }
+
+    .masterclass-table article {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .animal-name {
+        text-align: center;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .button-box {
+        margin-top: auto; 
+    }
+
+    footer {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px 10%;
+        text-align: left;
+    }
+
+    .footer-left img {
+        margin-left: -90px;
+    }
+
+    .footer-left {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .footer-right {
+        margin-right: -70px;
+    }
+
+    /*===========================
+                ABOUT
+    ===========================*/ 
+    .main-banner {
+        text-align: left;
+        padding: 3px 5%;
+        font-family: 'RobotoCustom', sans-serif;
+        font-weight: 400;
+    }
+
+    .two-master-box {
+        padding: 60px 12%;
+    }
+
+    .two-master-image {
+        flex-direction: row;
+        justify-content: center;
+        gap: 100px;
+    }
+
+    .five-master-box {
+        padding: 80px 12%;
+    }
+
+    .five-current-masters {
+        flex-direction: row; 
+        justify-content: center;
+        align-items: center;
+        gap: 80px;
+        max-width: 1200px;
+        margin: 50px auto 0;
+    }
+
+    .current-head {
+        flex: 1;
+        max-width: 400px;
+    }
+
+    .four-staff-box {
+        flex: 1.5;
+        gap: 50px 20px;
+    }
+    
+    .circle-image {
+        width: 140px; 
+        height: 140px;
+    }
+
+    /* ---  LESSONS --- */
+    
+    .lessons-master-class,
+    .video-lessons-section {
+        padding: 60px 10%;
+    }
+
+    .lessons-container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .video-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .video-item {
+        padding: 10px;
+    }
+
+    /*CONTACT*/
+    .contact.container {
+        flex-direction: row; 
+        justify-content: space-between;
+        padding: 60px 10%;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 80px;
+    }
+
+    .form-container {
+        flex: 2;
+    }
+
+    .hq-section {
+        flex: 1;
+        text-align: left; 
+    }
+
+    .social-icons {
+        justify-content: flex-start; 
+        filter: grayscale(100%);
+    }
+
+    .contact-form .form-group:nth-child(4) > label:not([for]) {
+        width: auto;
+        margin-left: 0;
+        margin-right: 15px;
+    }
+}

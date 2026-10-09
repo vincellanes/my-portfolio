@@ -1,0 +1,132 @@
+/* Global Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Mobile Default */
+    min-height: 100vh;
+}
+
+/* Sections */
+.section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.left-pane {
+    background-color: #f5f5f5;
+}
+
+.right-pane {
+    background-color: #ff7f00; /* Orange */
+    color: black;
+}
+
+/* Logo Design */
+.logo-circle {
+    width: 150px;
+    height: 150px;
+    border: 8px solid black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.small-logo {
+    width: 80px;
+    height: 80px;
+    border-width: 4px;
+}
+
+.drop {
+    width: 40px;
+    height: 40px;
+    background: black;
+    border-radius: 0 50% 50% 50%;
+    transform: rotate(45deg);
+    margin-top: 10px;
+}
+
+/* Buttons and Inputs */
+.button-group {
+    width: 100%;
+    max-width: 300px;
+}
+
+.btn-black {
+    width: 100%;
+    background: black;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.options {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.forgot-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    color: black;
+    font-size: 0.85rem;
+}
+
+/* Desktop Media Query (Laptops & Desktops) */
+@media (min-width: 1024px) {
+    .container {
+        flex-direction: row;
+        overflow: hidden;
+    }
+
+    .left-pane {
+        flex: 1;
+        /* S-Curve effect using a background image or clip-path */
+        background-color: #f5f5f5;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* The Orange Curve Overlay */
+    .right-pane {
+        flex: 1;
+        background-color: #ff7f00;
+        clip-path: ellipse(100% 100% at 100% 50%); /* Creates the curve */
+        margin-left: -150px; /* Pulls it over the white section */
+        padding-left: 150px;
+    }
+
+    .mobile-only {
+        display: none;
+    }
+}

@@ -1,0 +1,145 @@
+:root {
+    --bg-black: #000000;
+    --tab-text: #b0b3b8;
+    --active-blue: #0084ff;
+    --search-gray: #242526;
+    --text-white: #ffffff;
+    --online-green: #31a24c;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: var(--text-white);
+}
+
+/* Header & Tabs */
+.main-header {
+    padding-top: 15px;
+    position: sticky;
+    top: 0;
+    background: var(--bg-black);
+    z-index: 10;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.header-top h1 { font-size: 24px; flex-grow: 1; margin-left: 20px; }
+
+.header-actions { display: flex; gap: 15px; }
+
+.action-icon {
+    background: var(--search-gray);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-tabs {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0 5px;
+    border-bottom: 1px solid #333;
+}
+
+.tab {
+    color: var(--tab-text);
+    font-weight: 600;
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+.tab.active {
+    color: var(--active-blue);
+    border-bottom: 2px solid var(--active-blue);
+}
+
+/* Search Section */
+.search-section { padding: 15px; }
+
+.search-box {
+    background: var(--search-gray);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+}
+
+.search-profile {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.search-placeholder { color: var(--tab-text); font-size: 15px; }
+
+/* Chat List */
+.chat-container { padding: 5px 0; }
+
+.chat-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    gap: 15px;
+}
+
+.avatar-wrapper { position: relative; }
+
+.avatar-wrapper img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+}
+
+.status-dot {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    width: 14px;
+    height: 14px;
+    background: var(--online-green);
+    border: 3px solid var(--bg-black);
+    border-radius: 50%;
+}
+
+.chat-details { flex: 1; }
+
+.user-name { font-weight: 500; font-size: 16px; margin-bottom: 4px; }
+
+.message-preview {
+    font-size: 14px;
+    color: var(--tab-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.unread-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--active-blue);
+    border-radius: 50%;
+}
+
+.read-receipt { color: var(--tab-text); font-size: 12px; }
+
+/* Unread Text Styling */
+.unread .message-preview {
+    color: var(--text-white);
+    font-weight: bold;
+}

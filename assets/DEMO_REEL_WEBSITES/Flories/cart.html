@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flories Flower Shop - Shopping Cart</title>
+    <link rel="icon" href="images/others/remove_bg_logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-circle">
+                    <img src="images/others/remove_bg_logo.png">
+                </div>
+                <div class="logo-text">
+                    Flories
+                    <span>FLOWER SHOP</span>
+                </div>
+            </div>
+
+            <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+            <label for="menu-toggle" class="hamburger-icon-btn">☰</label>
+
+            <nav class="nav-bar">
+                <div class="mobile-menu-header">
+                    <a href="cart.html" class="cart-btn mobile-inner-cart">🛒 CART</a>
+                    <label for="menu-toggle" class="menu-close-btn">✕</label>
+                </div>
+
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="collection.html">Collection</a></li>
+                    <li><a href="occasion.html">Occasions</a></li>
+                    <li><a href="orders.html">Orders</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a href="cart.html" class="cart-btn desktop-cart-only">
+                🛒 CART
+            </a>
+        </div>
+    </header>
+
+    <section class="cart-section-header">
+        <div class="container">
+            <h2 class="cart-main-title">Shopping Cart</h2>
+        </div>
+    </section>
+
+    <section class="cart-wrap-section">
+        <div class="container cart-grid-layout">
+            
+            <div class="cart-status-column">
+                <div class="empty-cart-card">
+                    <p>Your cart is empty</p>
+                    <a href="collection.html" class="btn-browse">Browse</a>
+                </div>
+            </div>
+
+            <div class="cart-summary-column">
+                <div class="summary-card-block">
+                    <h3>Order Summary</h3>
+                    
+                    <div class="summary-pricing-list">
+                    </div>
+
+                    <form action="#" method="POST" class="checkout-form-element">
+                        <div class="form-group-field">
+                            <label for="checkout-name">Full Name</label>
+                            <input type="text" id="checkout-name" required>
+                        </div>
+
+                        <div class="form-group-field">
+                            <label for="checkout-email">Email</label>
+                            <input type="email" id="checkout-email" required>
+                        </div>
+
+                        <div class="form-group-field">
+                            <label for="checkout-phone">Phone</label>
+                            <input type="text" id="checkout-phone" required>
+                        </div>
+
+                        <div class="form-group-field">
+                            <label for="checkout-address">Delivery Address</label>
+                            <textarea id="checkout-address" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-group-field">
+                            <label for="checkout-date">Delivery Date</label>
+                            <input type="date" id="checkout-date" required>
+                        </div>
+
+                        <div class="form-group-field">
+                            <label for="checkout-request">Special Request (Optional)</label>
+                            <textarea id="checkout-request" rows="2" placeholder="Any special instructions for your order..."></textarea>
+                        </div>
+
+                        <div class="form-group-field">
+                            <label for="checkout-service">Service Type</label>
+                            <select id="checkout-service" required>
+                                <option value="Delivery" selected>Delivery</option>
+                                <option value="Pickup">Store Pickup</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group-field">
+                            <label for="checkout-payment">Payment Method</label>
+                            <select id="checkout-payment" required>
+                                <option value="" disabled selected>Select a payment method</option>
+                                <option value="COD">Cash on Delivery (COD)</option>
+                                <option value="GCash">GCash</option>
+                            </select>
+                        </div>
+
+                        <div id="gcash-payment-panel" class="gcash-panel-box">
+                            <h4>Scan to Pay via GCash</h4>
+                            <p class="gcash-panel-instructions">Please settle your total amount using the details below before placing your order.</p>
+                            
+                            <div class="qr-code-placeholder-frame">
+                                <span class="qr-frame-label"><img src="images/others/sample_qr.png" alt="GCash QR code"></span>
+                            </div>
+
+                            <p class="gcash-label-text">GCash Number:</p>
+                            <p class="gcash-number-display">0947 142 5732</p>
+                        </div>
+
+                        <button type="submit" class="btn-place-order">PLACE ORDER</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div>
+                <div class="logo">
+                    <div class="logo-text">Flories<span>FLOWER SHOP</span></div>
+                </div>
+                <p class="footer-desc">Where Every Petal Tells Your Story</p>
+                <p class="copyright">© 2026 Flories Flower Shop.<br>All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="collection.html">Shop</a></li>
+                    <li><a href="occasion.html">Occasions</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

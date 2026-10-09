@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Placement</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffe0b2;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+    section {
+      background-color: white;
+      padding: 20px;
+      margin: 20px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+ 
+  <section>
+    <h2>Order Placement</h2>
+    <h3>Complete your order below</h3>
+
+ 
+    <div>
+      <a href><img srcset="product_one.jpeg" alt width="150"></a>
+      <h4>GOING ALBUM NIGHT VERSION</h4>
+      <p id="product-price">$20.00</p>
+    </div>
+
+    
+
+    
+    <form action="index.html" method="post">
+      
+
+      <label for="name">Name:</label>
+      <textarea id="name" name="name" rows="2" placeholder="Enter your name" required></textarea>
+
+      <label for="address">Shipping Address:</label>
+      <textarea id="address" name="address" rows="2" placeholder="Enter your address" required></textarea>
+      
+      
+      <label for="payment-method">Payment Method:</label>
+      <select id="payment-method" name="payment-method" required>
+        <option value="credit-card">Credit Card</option>
+        <option value="cash-on-delivery">Cash on Delivery</option>
+      </select>
+
+      
+      <button type="submit">Place Order</button>
+     
+    </form>
+  </section>
+
+  <script>
+   
+    const urlParams = new URLSearchParams(window.location.homepage.html);
+    const product = urlParams.get('product');
+    const price = urlParams.get('price');
+    const image = urlParams.get('image');
+
+   
+    document.getElementById('product-name').innerText = product;
+    document.getElementById('product-price').innerText = `$${price}`;
+    document.getElementById('product-image').src = image;
+  </script>
+</body>
+</html>
