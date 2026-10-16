@@ -9,39 +9,51 @@ const CONFIG = {
     telegram: 'https://t.me/baekcece'
   }
 };
-const D = 'assets/DEMO_REEL_WEBSITES/';// function for image directory cover 
+const IMG = 'assets/images/projects/';
+// For each project: live = link to the live website, repo = link to its GitHub repository.
+// A button with an empty link shows as disabled (liveOff is the hover text explaining why).
 // status values: 'Completed' or 'In Progress'
 const PROJECTS = [
   {
     name: 'Flories Flower Shop', status: 'Completed', pos: 'center',
     desc: 'Multi-page flower shop with a collection catalog, occasions, cart, order lookup, contact page and an admin dashboard.',
-    note: 'The pages open without a server; ordering and admin need PHP + MySQL (XAMPP).',
-    tech: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'], img: D + 'Flories/images/banners/banner_intro.png',
-    alt: 'Flories home page banner: A Bouquet for Every Occasion', url: D + 'Flories/index.html'
+    note: 'No live demo: ordering and the admin dashboard need a PHP + MySQL host.',
+    tech: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'], img: 'assets/images/flories.png',
+    alt: 'Flories home page banner: A Bouquet for Every Occasion',
+    live: 'https://vincellanes.github.io/FloriesFlowerShop/',
+    repo: 'https://github.com/vincellanes/FloriesFlowerShop'
   },
   {
     name: 'House of Origami', status: 'Completed',
     desc: 'Four-page site about the art of paper folding, with lessons, an about page, a contact page and custom fonts.',
-    tech: ['HTML', 'CSS'], img: D + 'ORIGAMI/images/origami_home_pic.jpeg',
-    alt: 'House of Origami home page', url: D + 'ORIGAMI/html/index.html'
+    tech: ['HTML', 'CSS'], img: 'assets/images/origami.png',
+    alt: 'House of Origami home page',
+    live: 'https://vincellanes.github.io/Origami/', 
+    repo: 'https://github.com/vincellanes/Origami'
   },
   {
     name: 'Going Shop Shop', status: 'Completed',
     desc: 'Mini merch store: product cards with prices, a Buy Now order page and a confirmation that returns to the shop.',
-    tech: ['HTML', 'CSS', 'JavaScript'], img: D + 'MINIORDERWEB/miniorder.jpeg',
-    alt: 'Going Shop Shop product page', url: D + 'MINIORDERWEB/homepage.html'
+    tech: ['HTML', 'CSS', 'JavaScript'], img: 'assets/images/going-shop.png',
+    alt: 'Going Shop Shop product page',
+    live: 'https://vincellanes.github.io/MiniOrderWeb/homepage.html', 
+    repo: 'https://github.com/vincellanes/MiniOrderWeb'
   },
   {
     name: 'Messenger Replica', status: 'Completed',
     desc: 'Dark chat-list screen with tabs, a search bar, online indicators and unread markers.',
-    tech: ['HTML', 'CSS'], img: D + 'MESSENGER REPLICA/messenger_pic.jpeg',
-    alt: 'Messenger replica chat list', url: D + 'MESSENGER REPLICA/index.html'
+    tech: ['HTML', 'CSS'], img: 'assets/images/messenger.png',
+    alt: 'Messenger replica chat list',
+    live: 'https://vincellanes.github.io/messengerclone/', 
+    repo: 'https://github.com/vincellanes/messengerclone'
   },
   {
     name: 'Login UI', status: 'Completed',
     desc: 'Split-screen login page with a curved divider, and a mobile layout that moves the buttons to the left pane.',
-    tech: ['HTML', 'CSS'], img: D + 'LOGIN UI/basic_UI.jpeg',
-    alt: 'Login page with an orange curved panel', url: D + 'LOGIN UI/index.html'
+    tech: ['HTML', 'CSS'], img: 'assets/images/login.png',
+    alt: 'Login page with an orange curved panel',
+    live: 'https://vincellanes.github.io/loginui/', 
+    repo: 'https://github.com/vincellanes/loginui'
   }
 ];
 // Certificate images: put files in assets/certificates/ and add { cat, img } below.
@@ -75,13 +87,19 @@ const LINKS = [
   const gotPhoto = () => fig.classList.add('has-photo');
   photo.complete && photo.naturalWidth ? gotPhoto() : photo.addEventListener('load', gotPhoto);
 
-  // Projects
+  // Projects. A link renders as a real button; with no link yet it renders as a disabled one.
+  const action = (url, cls, inner, label, off = 'Link not added yet') => url
+    ? `<a class="${cls}" href="${esc(encodeURI(url))}" target="_blank" rel="noopener" aria-label="${esc(label)}" title="${esc(label)}">${inner}</a>`
+    : `<span class="${cls} is-off" role="link" aria-disabled="true" aria-label="${esc(label)} (${esc(off.toLowerCase())})" title="${esc(off)}">${inner}</span>`;
   const card = (p, rv) => `<article class="card glass${rv ? ' rv' : ''}">
     <div class="media"><img src="${encodeURI(p.img)}" alt="${esc(p.alt)}" loading="lazy" style="--pos:${p.pos || 'top'}"></div>
     <div class="body"><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>${p.note ? `<p class="note">${esc(p.note)}</p>` : ''}
     <ul class="tags">${p.tech.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
     <div class="foot-row"><span class="status ${p.status === 'Completed' ? '' : 'wip'}">${esc(p.status)}</span>
-    <a class="btn btn-sm btn-primary" href="${encodeURI(p.url)}" target="_blank" rel="noopener">View Project<span class="sr"> ${esc(p.name)}</span></a></div></div></article>`;
+    <div class="card-actions">
+      ${action(p.live, 'btn btn-sm btn-primary', 'View Live', 'View live website: ' + p.name, p.liveOff)}
+      ${action(p.repo, 'btn btn-sm btn-ghost icon-btn', '<img src="assets/logo_svg/github_dark.svg" class="logo-white" alt="" width="18" height="18">', 'View ' + p.name + ' on GitHub')}
+    </div></div></div></article>`;
   $('#project-grid').innerHTML = PROJECTS.slice(0, 3).map(p => card(p, true)).join('');
   $('#modal-projects').innerHTML = PROJECTS.map(p => card(p, false)).join('');
 
@@ -199,14 +217,23 @@ const LINKS = [
       ${logo ? `<img src="${logo}" alt="" class="${k === 'github' ? 'lg-dark' : ''}">` : '<span class="mk">in</span>'}
       <span>${label}<small>${esc(shown)}</small></span></a></li>`;
   }).join('');
-  $('#contact-form').addEventListener('submit', e => {
+  // Contact form: sends straight to Web3Forms from the page (no email app, no page change)
+  const form = $('#contact-form'), msg = $('#form-msg'), sendBtn = $('button[type=submit]', form);
+  const say = (text, state) => { msg.textContent = text; msg.dataset.state = state || ''; };
+  form.addEventListener('submit', async e => {
     e.preventDefault();
-    const f = e.target, msg = $('#form-msg');
-    if (!f.checkValidity()) { f.reportValidity(); msg.textContent = 'Please fill in every field with a valid email.'; return; }
-    const d = new FormData(f);
-    location.href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent('Portfolio message from ' + d.get('name')) +
-      '&body=' + encodeURIComponent(d.get('message') + '\n\n' + d.get('name') + ' (' + d.get('email') + ')');
-    msg.textContent = 'Your email app should open with the message ready to send.';
+    if (!form.checkValidity()) { form.reportValidity(); say('Please fill in every field with a valid email.', 'error'); return; }
+    const label = sendBtn.textContent;
+    sendBtn.disabled = true; sendBtn.textContent = 'Sending...'; say('Sending your message...');
+    try {
+      const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
+      const data = await res.json().catch(() => ({}));
+      console.info('Web3Forms response:', res.status, data); // open DevTools > Console to see what Web3Forms answered
+      if (res.ok && data.success) { form.reset(); say('Message sent. Thank you, I will reply by email soon.', 'ok'); }
+      else { say('Your message could not be sent (' + (data.message || 'error ' + res.status) + '). Please try again, or email me at ' + CONFIG.email + '.', 'error'); }
+    } catch (err) {
+      say('No connection. Please check your internet and try again, or email me at ' + CONFIG.email + '.', 'error');
+    } finally { sendBtn.disabled = false; sendBtn.textContent = label; }
   });
   $('#year').textContent = new Date().getFullYear();
 

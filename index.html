@@ -219,12 +219,16 @@
         </div>
         <div class="contact-grid">
           <ul class="links rv" id="links"></ul>
-          <form class="panel glass rv" id="contact-form" novalidate>
+          <form class="panel glass rv" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value="b45b3179-be9d-43dc-ab58-5bf25f36c19d">
+            <input type="hidden" name="subject" value="New message from my portfolio">
+            <input type="hidden" name="from_name" value="Portfolio contact form">
+            <div class="hp" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></div>
             <label>Your name<input name="name" required autocomplete="name"></label>
             <label>Your email<input name="email" type="email" required autocomplete="email"></label>
             <label>Message<textarea name="message" rows="4" required></textarea></label>
-            <button class="btn btn-primary" type="submit">Open in email app</button>
-            <p class="hint" id="form-msg" role="status">This opens your email app with the message filled in.</p>
+            <button class="btn btn-primary" type="submit">Send message</button>
+            <p class="hint" id="form-msg" role="status">Your message is sent straight to my inbox.</p>
           </form>
         </div>
       </div>

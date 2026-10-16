@@ -1343,3 +1343,19 @@ textarea {
     display: block;
   }
 }
+
+/* =========================================
+   REVISION: View Live + GitHub buttons, contact form states
+   ========================================= */
+.foot-row { flex-wrap: wrap; row-gap: 10px; }
+.card-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.card-actions .btn { height: 38px; padding-block: 0; }
+.card-actions .icon-btn { width: 38px; padding: 0; flex: none; }
+.card-actions .icon-btn img { display: block; }
+.btn.is-off { opacity: .45; cursor: not-allowed; box-shadow: none; }
+.btn.is-off:hover { transform: none; }
+
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.hint[data-state="ok"] { color: var(--accent-color); }
+.hint[data-state="error"] { color: #ff8fa8; }
+form .btn:disabled { opacity: .6; cursor: progress; transform: none; }
