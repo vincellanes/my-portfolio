@@ -66,7 +66,6 @@ const CERTS = [
   { cat: 'Certificates', img: 'assets/images/cert2.png' }, { cat: 'Certificates', img: 'assets/images/cert3.png' },
   { cat: 'Certificates', img: 'assets/images/cert4.png' }, { cat: 'Certificates', img: 'assets/images/cert5.png' },
   { cat: 'Certificates', img: 'assets/images/cert6.png' }
-  // e.g. { cat: 'Certificates', img: '../assets/certificates/cisco-networking.jpg' }
 ];
 const LINKS = [
   ['email', 'Email', 'assets/logo_svg/gmail.svg'], ['github', 'GitHub', 'assets/logo_svg/github_dark.svg'],
@@ -83,15 +82,17 @@ const LINKS = [
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
   // Profile photo: shows assets/profile.jpg if it exists, otherwise the placeholder
-  const photo = $('#portrait'), fig = photo.closest('figure');
-  const gotPhoto = () => fig.classList.add('has-photo');
-  photo.complete && photo.naturalWidth ? gotPhoto() : photo.addEventListener('load', gotPhoto);
+  const photo = $('#portrait'), fig = photo ? photo.closest('figure') : null;
+  const gotPhoto = () => fig && fig.classList.add('has-photo');
+  if (photo) {
+    photo.complete && photo.naturalWidth ? gotPhoto() : photo.addEventListener('load', gotPhoto);
+  }
 
   // Projects. A link renders as a real button; with no link yet it renders as a disabled one.
   const action = (url, cls, inner, label, off = 'Link not added yet') => url
     ? `<a class="${cls}" href="${esc(encodeURI(url))}" target="_blank" rel="noopener" aria-label="${esc(label)}" title="${esc(label)}">${inner}</a>`
     : `<span class="${cls} is-off" role="link" aria-disabled="true" aria-label="${esc(label)} (${esc(off.toLowerCase())})" title="${esc(off)}">${inner}</span>`;
-  const card = (p, rv) => `<article class="card glass${rv ? ' rv' : ''}">
+  const card = (p, rv) => `<article class="card${rv ? ' rv' : ''}">
     <div class="media"><img src="${encodeURI(p.img)}" alt="${esc(p.alt)}" loading="lazy" style="--pos:${p.pos || 'top'}"></div>
     <div class="body"><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>${p.note ? `<p class="note">${esc(p.note)}</p>` : ''}
     <ul class="tags">${p.tech.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
@@ -100,8 +101,11 @@ const LINKS = [
       ${action(p.live, 'btn btn-sm btn-primary', 'View Live', 'View live website: ' + p.name, p.liveOff)}
       ${action(p.repo, 'btn btn-sm btn-ghost icon-btn', '<img src="assets/logo_svg/github_dark.svg" class="logo-white" alt="" width="18" height="18">', 'View ' + p.name + ' on GitHub')}
     </div></div></div></article>`;
-  $('#project-grid').innerHTML = PROJECTS.slice(0, 3).map(p => card(p, true)).join('');
-  $('#modal-projects').innerHTML = PROJECTS.map(p => card(p, false)).join('');
+  
+  const pGrid = $('#project-grid');
+  const mGrid = $('#modal-projects');
+  if (pGrid) pGrid.innerHTML = PROJECTS.slice(0, 3).map(p => card(p, true)).join('');
+  if (mGrid) mGrid.innerHTML = PROJECTS.map(p => card(p, false)).join('');
 
   // Certificates overlay: image-only tiles, category tabs, in-page preview
   const tabs = ['All', ...CATS], tabBox = $('#cert-tabs'), grid = $('#cert-grid'), lightBody = $('#light-body');
@@ -109,38 +113,50 @@ const LINKS = [
   let current = 'All', shown = [];
   const showCerts = tab => {
     current = tab;
-    $$('[role=tab]', tabBox).forEach(b => { const on = b.dataset.tab === tab; b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1; });
+    if (tabBox) {
+      $$('[role=tab]', tabBox).forEach(b => { const on = b.dataset.tab === tab; b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1; });
+    }
     shown = CERTS.filter(c => tab === 'All' || c.cat === tab);
-    grid.innerHTML = shown.length ? shown.map((c, i) => `<button class="cert${c.img ? ' has-img' : ''}" type="button" data-i="${i}" aria-label="View ${esc(c.cat)} image ${i + 1}">${c.img ? `<img src="${encodeURI(c.img)}" alt="" loading="lazy">` : ICON}</button>`).join('')
-      : '<p class="empty">Nothing here yet. Add an entry to CERTS in script.js.</p>';
+    if (grid) {
+      grid.innerHTML = shown.length ? shown.map((c, i) => `<button class="cert${c.img ? ' has-img' : ''}" type="button" data-i="${i}" aria-label="View ${esc(c.cat)} image ${i + 1}">${c.img ? `<img src="${encodeURI(c.img)}" alt="" loading="lazy">` : ICON}</button>`).join('')
+        : '<p class="empty">Nothing here yet. Add an entry to CERTS in script.js.</p>';
+    }
   };
-  tabBox.innerHTML = tabs.map(t => `<button class="tab" role="tab" data-tab="${t}">${t}</button>`).join('');
-  tabBox.addEventListener('click', e => { const b = e.target.closest('[role=tab]'); if (b) showCerts(b.dataset.tab); });
-  tabBox.addEventListener('keydown', e => {
-    const i = tabs.indexOf(current), k = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
-    if (k === undefined) return;
-    e.preventDefault(); showCerts(tabs[(k + tabs.length) % tabs.length]); $('[aria-selected=true]', tabBox).focus();
-  });
-  grid.addEventListener('click', e => {
-    const b = e.target.closest('.cert'); if (!b) return;
-    const c = shown[b.dataset.i];
-    lightBody.innerHTML = c.img ? `<img src="${encodeURI(c.img)}" alt="${esc(c.cat)} image">` : `<div class="ph-big">${ICON}</div>`;
-    openModal('lightbox', b);
-  });
+  if (tabBox) {
+    tabBox.innerHTML = tabs.map(t => `<button class="tab" role="tab" data-tab="${t}">${t}</button>`).join('');
+    tabBox.addEventListener('click', e => { const b = e.target.closest('[role=tab]'); if (b) showCerts(b.dataset.tab); });
+    tabBox.addEventListener('keydown', e => {
+      const i = tabs.indexOf(current), k = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+      if (k === undefined) return;
+      e.preventDefault(); showCerts(tabs[(k + tabs.length) % tabs.length]); $('[aria-selected=true]', tabBox).focus();
+    });
+  }
+  if (grid) {
+    grid.addEventListener('click', e => {
+      const b = e.target.closest('.cert'); if (!b) return;
+      const c = shown[b.dataset.i];
+      if (lightBody) lightBody.innerHTML = c.img ? `<img src="${encodeURI(c.img)}" alt="${esc(c.cat)} image">` : `<div class="ph-big">${ICON}</div>`;
+      openModal('lightbox', b);
+    });
+  }
   showCerts('All');
 
-  // Overlays: blur-only backdrop, focus trap, Esc, click outside. They can stack (preview over certificates).
+  // Overlays: backdrop, focus trap, Esc, click outside.
   const lock = on => { $$('header,main,footer').forEach(el => el.inert = on); document.documentElement.style.overflow = on ? 'hidden' : ''; };
   const openModal = (id, trigger) => {
-    const m = document.getElementById(id), under = $$('.overlay.open');
+    const m = document.getElementById(id);
+    if (!m) return;
+    const under = $$('.overlay.open');
     under.forEach(o => o.inert = true);
     if (!under.length) lock(true);
     m._opener = trigger;
     m.classList.add('open'); m.setAttribute('aria-hidden', 'false');
-    $('.close', m).focus();
+    const closeBtn = $('.close', m);
+    if (closeBtn) closeBtn.focus();
     const v = $('video', m); if (v) { const pl = v.play(); if (pl && pl.catch) pl.catch(() => { }); }
   };
   const closeModal = m => {
+    if (!m) return;
     m.classList.remove('open'); m.setAttribute('aria-hidden', 'true');
     const v = $('video', m); if (v) v.pause();
     const rest = $$('.overlay.open');
@@ -166,10 +182,12 @@ const LINKS = [
 
   // Mobile menu
   const burger = $('.burger'), menu = $('#menu');
-  const setMenu = open => { menu.classList.toggle('open', open); burger.setAttribute('aria-expanded', open); };
-  burger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
-  menu.addEventListener('click', e => e.target.closest('a') && setMenu(false));
-  document.addEventListener('keydown', e => e.key === 'Escape' && setMenu(false));
+  if (burger && menu) {
+    const setMenu = open => { menu.classList.toggle('open', open); burger.setAttribute('aria-expanded', open); };
+    burger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    menu.addEventListener('click', e => e.target.closest('a') && setMenu(false));
+    document.addEventListener('keydown', e => e.key === 'Escape' && setMenu(false));
+  }
 
   // Current-section underline (extra sections belong to the nearest nav item)
   const group = { about: 'home', journey: 'projects', certificates: 'projects' };
@@ -210,32 +228,41 @@ const LINKS = [
   $$('.rv').forEach(element => rv.observe(element));
 
   // Contact links and form
-  $('#links').innerHTML = LINKS.map(([k, label, logo]) => {
-    const href = k === 'email' ? 'mailto:' + CONFIG.email : CONFIG.links[k];
-    const shown = k === 'email' ? CONFIG.email : href.replace(/^https?:\/\/(www\.)?/, '');
-    return `<li><a href="${esc(href)}"${k === 'email' ? '' : ' target="_blank" rel="noopener"'}>
-      ${logo ? `<img src="${logo}" alt="" class="${k === 'github' ? 'lg-dark' : ''}">` : '<span class="mk">in</span>'}
-      <span>${label}<small>${esc(shown)}</small></span></a></li>`;
-  }).join('');
+  const linksBox = $('#links');
+  if (linksBox) {
+    linksBox.innerHTML = LINKS.map(([k, label, logo]) => {
+      const href = k === 'email' ? 'mailto:' + CONFIG.email : CONFIG.links[k];
+      const shown = k === 'email' ? CONFIG.email : href.replace(/^https?:\/\/(www\.)?/, '');
+      return `<li><a href="${esc(href)}"${k === 'email' ? '' : ' target="_blank" rel="noopener"'}>
+        ${logo ? `<img src="${logo}" alt="" class="${k === 'github' ? 'lg-dark' : ''}">` : '<span class="mk">in</span>'}
+        <span>${label}<small>${esc(shown)}</small></span></a></li>`;
+    }).join('');
+  }
+
   // Contact form: sends straight to Web3Forms from the page (no email app, no page change)
-  const form = $('#contact-form'), msg = $('#form-msg'), sendBtn = $('button[type=submit]', form);
-  const say = (text, state) => { msg.textContent = text; msg.dataset.state = state || ''; };
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    if (!form.checkValidity()) { form.reportValidity(); say('Please fill in every field with a valid email.', 'error'); return; }
-    const label = sendBtn.textContent;
-    sendBtn.disabled = true; sendBtn.textContent = 'Sending...'; say('Sending your message...');
-    try {
-      const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
-      const data = await res.json().catch(() => ({}));
-      console.info('Web3Forms response:', res.status, data); // open DevTools > Console to see what Web3Forms answered
-      if (res.ok && data.success) { form.reset(); say('Message sent. Thank you, I will reply by email soon.', 'ok'); }
-      else { say('Your message could not be sent (' + (data.message || 'error ' + res.status) + '). Please try again, or email me at ' + CONFIG.email + '.', 'error'); }
-    } catch (err) {
-      say('No connection. Please check your internet and try again, or email me at ' + CONFIG.email + '.', 'error');
-    } finally { sendBtn.disabled = false; sendBtn.textContent = label; }
-  });
-  $('#year').textContent = new Date().getFullYear();
+  const form = $('#contact-form'), msg = $('#form-msg');
+  if (form && msg) {
+    const sendBtn = $('button[type=submit]', form);
+    const say = (text, state) => { msg.textContent = text; msg.dataset.state = state || ''; };
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); say('Please fill in every field with a valid email.', 'error'); return; }
+      const label = sendBtn ? sendBtn.textContent : 'Send';
+      if (sendBtn) { sendBtn.disabled = true; sendBtn.textContent = 'Sending...'; }
+      say('Sending your message...');
+      try {
+        const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.success) { form.reset(); say('Message sent. Thank you, I will reply by email soon.', 'ok'); }
+        else { say('Your message could not be sent (' + (data.message || 'error ' + res.status) + '). Please try again, or email me at ' + CONFIG.email + '.', 'error'); }
+      } catch (err) {
+        say('No connection. Please check your internet and try again, or email me at ' + CONFIG.email + '.', 'error');
+      } finally { if (sendBtn) { sendBtn.disabled = false; sendBtn.textContent = label; } }
+    });
+  }
+
+  const yr = $('#year');
+  if (yr) yr.textContent = new Date().getFullYear();
 
   // Smooth scrolling for in-page links (eased, so it stays smooth even if the browser ignores CSS smooth scroll)
   let glideId = 0;
@@ -261,18 +288,47 @@ const LINKS = [
     try { history.pushState(null, '', '#' + t.id); } catch (err) { /* blocked on file:// pages; scrolling still works */ }
   });
 
-  // Parallax stars background (CSS animates them; this only places them)
+  // Parallax stars background (CSS animates them; this places them)
   const createStars = count => {
     const w = Math.max(2560, innerWidth), shadows = [];
     for (let i = 0; i < count; i++) shadows.push(`${Math.floor(Math.random() * w)}px ${Math.floor(Math.random() * 2560)}px #FFF`);
     return shadows.join(', ');
   };
-  const smallStars = document.getElementById('stars-small');
-  const mediumStars = document.getElementById('stars-medium');
-  const largeStars = document.getElementById('stars-large');
-  if (smallStars && mediumStars && largeStars) {
-    smallStars.style.boxShadow = createStars(700);
-    mediumStars.style.boxShadow = createStars(200);
-    largeStars.style.boxShadow = createStars(100);
+  const initStars = () => {
+    const smallStars = document.getElementById('stars-small');
+    const mediumStars = document.getElementById('stars-medium');
+    const largeStars = document.getElementById('stars-large');
+    if (smallStars && mediumStars && largeStars) {
+      smallStars.style.boxShadow = createStars(700);
+      mediumStars.style.boxShadow = createStars(200);
+      largeStars.style.boxShadow = createStars(100);
+    }
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initStars);
+  } else {
+    initStars();
+  }
+
+  // Fixed Bottom-Right Theme Toggle (Light / Dark mode)
+  const themeToggle = document.getElementById('theme-toggle');
+  const updateToggleA11y = theme => {
+    if (!themeToggle) return;
+    const isDark = theme === 'dark';
+    themeToggle.setAttribute('aria-label', isDark ? 'Switch to Chocolate theme' : 'Switch to Premium theme');
+    themeToggle.setAttribute('title', isDark ? 'Switch to Chocolate theme' : 'Switch to Premium theme');
+  };
+  const setTheme = theme => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try { localStorage.setItem('theme', theme); } catch (err) {}
+    updateToggleA11y(theme);
+  };
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  updateToggleA11y(currentTheme);
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const active = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      setTheme(active);
+    });
   }
 })();
